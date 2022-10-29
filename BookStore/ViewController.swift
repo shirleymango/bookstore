@@ -6,7 +6,7 @@
 import UIKit
 
 @available(iOS 13.0, *)
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -31,8 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         // Setting up search controller
         navigationItem.searchController = searchController
-        
-        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: (view.frame.size.width/3),
@@ -52,9 +51,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let JSON = String(data: data!, encoding: .utf8)!
                 let jsonData = JSON.data(using: .utf8)!
                 self.dict = try! JSONDecoder().decode(Books.self, from: jsonData)
-                for book in self.dict!.books {
-                    self.filterData.append(book)
-                }
+                self.filterData = self.dict!.books
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -69,15 +66,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.filterData.count 
+        return self.filterData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let bookCell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as! BookCollectionViewCell
-        if(self.dict != nil) {
-            let imageURLString = "http://localhost:8000/" + (self.dict?.books[indexPath.row].id)! + ".jpg"
-            bookCell.configure(imageURLString: imageURLString)
-        }
+        let imageURLString = "http://localhost:8000/" + self.filterData[indexPath.row].id + ".jpg"
+        bookCell.configure(imageURLString: imageURLString)
         return bookCell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -88,10 +83,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         vc?.author = (dict?.books[indexPath.row].author)!
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
-            return
+}
+@available(iOS 13.0, *)
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("book.title")
+        filterData = []
+        if searchText == "" {
+            filterData = dict!.books
         }
+        for book in filterData {
+            if book.title.uppercased().contains(searchText.uppercased()) || book.author.uppercased().contains(searchText.uppercased()) {
+                filterData.append(book)
+            }
+        }
+        self.collectionView.reloadData()
     }
 }
