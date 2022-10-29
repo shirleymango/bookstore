@@ -29,7 +29,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Setting up search controller
+        let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         let layout = UICollectionViewFlowLayout()
@@ -87,12 +87,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 @available(iOS 13.0, *)
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("book.title")
         filterData = []
         if searchText == "" {
             filterData = dict!.books
         }
-        for book in filterData {
+        for book in dict!.books {
             if book.title.uppercased().contains(searchText.uppercased()) || book.author.uppercased().contains(searchText.uppercased()) {
                 filterData.append(book)
             }
