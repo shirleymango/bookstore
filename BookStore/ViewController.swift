@@ -59,6 +59,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         task.resume()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (dict != nil) {
+            self.filterData = self.dict!.books
+            self.collectionView.reloadData()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
