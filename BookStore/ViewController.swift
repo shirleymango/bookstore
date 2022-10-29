@@ -12,6 +12,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var dict: Books?
     
+    let searchController = UISearchController()
+    
     struct Books: Decodable {
         var books: [Book] = Array()
     }
@@ -27,6 +29,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setting up search controller
+        navigationItem.searchController = searchController
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: (view.frame.size.width/3),
