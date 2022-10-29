@@ -124,6 +124,39 @@
             </objects>
             <point key="canvasLocation" x="1673.913043478261" y="39.508928571428569"/>
         </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="Rn0-cT-BVF">
+            <objects>
+                <viewController id="OEO-DI-TOC" customClass="SearchResultsViewController" customModule="BookStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mYo-er-Dzo"/>
+                        <viewControllerLayoutGuide type="bottom" id="n3U-Gn-dTU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eYu-aV-IO4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ImA-A5-SLP">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ImA-A5-SLP" firstAttribute="top" secondItem="mYo-er-Dzo" secondAttribute="bottom" id="CkP-p8-aMC"/>
+                            <constraint firstItem="n3U-Gn-dTU" firstAttribute="top" secondItem="ImA-A5-SLP" secondAttribute="bottom" id="IHT-uv-mOT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ImA-A5-SLP" secondAttribute="trailing" id="UCg-pH-XqA"/>
+                            <constraint firstItem="ImA-A5-SLP" firstAttribute="leading" secondItem="eYu-aV-IO4" secondAttribute="leadingMargin" id="bug-Js-Nb6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ImA-A5-SLP" id="Rt5-en-5x1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Dv-5O-nze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2688" y="40"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Act-OL-QZc">
             <objects>

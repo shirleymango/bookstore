@@ -11,7 +11,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet var collectionView: UICollectionView!
     
     var dict: Books?
-    let searchController = UISearchController(searchResultsController: SearchResultsViewController())
+    let searchController = UISearchController()
+    var filterData: [Book] = Array()
     
     struct Books: Decodable {
         var books: [Book] = Array()
@@ -28,7 +29,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Setting up search controller
         navigationItem.searchController = searchController
         
@@ -52,6 +52,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let JSON = String(data: data!, encoding: .utf8)!
                 let jsonData = JSON.data(using: .utf8)!
                 self.dict = try! JSONDecoder().decode(Books.self, from: jsonData)
+                for book in self.dict!.books {
+                    self.filterData.append(book)
+                }
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -66,7 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dict?.books.count ?? 5
+        return self.filterData.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,4 +95,3 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
 }
-
