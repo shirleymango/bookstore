@@ -1,6 +1,6 @@
 # Bookstore
 
-Write a simple iOS bookstore application that allows you to display your book covers, along with 
+A simple iOS bookstore application that allows you to display your book covers, along with 
 some information about the book itself. To achieve this you will need to read the `books.json` file from a server (e.g. `localhost:8000/books.json`. Each book is represented by a JSON object in the array from the `books` key.
 
 ```json
@@ -27,7 +27,3 @@ python3 -m http.server --directory /path/to/assignment/Bookstore-Server/
 ![Bookstore](bookstore.png)
 
 ---
-
-Please provide your solution as a `.zip` of this directory along with your implementation. Your 
-solution must compile and run on the iOS simulator. Please do not use 3rd party frameworks.
-	
