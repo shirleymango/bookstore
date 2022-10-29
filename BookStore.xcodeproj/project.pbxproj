@@ -16,6 +16,7 @@
 		EEB43981290C5E1400E79E71 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB43980290C5E1400E79E71 /* BookCollectionViewCell.swift */; };
 		EEB43985290C834000E79E71 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB43984290C834000E79E71 /* DetailsViewController.swift */; };
 		EEB43989290CDE8C00E79E71 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB43988290CDE8C00E79E71 /* BookTableViewCell.swift */; };
+		EEB4398F290CE8E700E79E71 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4398E290CE8E700E79E71 /* SearchResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		EEB43980290C5E1400E79E71 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEB43984290C834000E79E71 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		EEB43988290CDE8C00E79E71 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		EEB4398E290CE8E700E79E71 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				EEB43980290C5E1400E79E71 /* BookCollectionViewCell.swift */,
 				EEB43984290C834000E79E71 /* DetailsViewController.swift */,
 				EEB43988290CDE8C00E79E71 /* BookTableViewCell.swift */,
+				EEB4398E290CE8E700E79E71 /* SearchResultsViewController.swift */,
 			);
 			path = BookStore;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEB43981290C5E1400E79E71 /* BookCollectionViewCell.swift in Sources */,
+				EEB4398F290CE8E700E79E71 /* SearchResultsViewController.swift in Sources */,
 				9022DE911E5BCF47002F0CF4 /* ViewController.swift in Sources */,
 				9022DE8F1E5BCF47002F0CF4 /* AppDelegate.swift in Sources */,
 				EEB43989290CDE8C00E79E71 /* BookTableViewCell.swift in Sources */,

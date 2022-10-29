@@ -6,13 +6,12 @@
 import UIKit
 
 @available(iOS 13.0, *)
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating {
+
     @IBOutlet var collectionView: UICollectionView!
     
     var dict: Books?
-    
-    let searchController = UISearchController()
+    let searchController = UISearchController(searchResultsController: SearchResultsViewController())
     
     struct Books: Decodable {
         var books: [Book] = Array()
@@ -33,6 +32,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Setting up search controller
         navigationItem.searchController = searchController
         
+        searchController.searchResultsUpdater = self
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: (view.frame.size.width/3),
@@ -84,6 +84,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         vc?.ID = (dict?.books[indexPath.row].id)!
         vc?.author = (dict?.books[indexPath.row].author)!
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
     }
 }
 
